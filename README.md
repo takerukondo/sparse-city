@@ -1,92 +1,54 @@
 # sparse-city
 
-**Experimental local MVP.** Partial-observability planning toy: buy information vs act vs abstain under budget, with a reproducible scorecard.
+What should an agent do when the useful answer is hidden, looking costs money, and guessing confidently is worse than saying “I don't know”?
 
-Independent personal remix — **not** an official SCI-Arc publication. Synthetic city grids only.
-
-See [ATTRIBUTION.md](./ATTRIBUTION.md), [PROVENANCE.md](./PROVENANCE.md), [LIMITATIONS.md](./LIMITATIONS.md), [CITATION.cff](./CITATION.cff).
-
-## Lineage authors (from source cards)
-
-Do not flatten into sole authorship. `takeru_role: unknown`.
-
-- **Views of Planet City:** Liam Young, Casey Rehm, John Cooper, Jennifer Chen, Damjan Jovanovic, Angelica Lorenzi, Namik Mackic
-- **How Cities See:** Benjamin Bratton, Casey Rehm, Laure Michelon
-- **Backyard Home Data Explorer:** Mimi Zeiger, Casey Rehm, Yundi Zhang, Yashwanth Munuhoti, Saghyun Suh, plus additional listed contributors on the source card
-- **Multifamily Housing in Somaliland** (mechanism hint only): Frederik Emil Seehusen, Masha Hupalo, Anders Michelsen, Rashid Ali, Artem Panchenko, Emily Dinnerman, Nicholas Gochnour, Esin Karaosman, Malvin Wibowo, Lance Arevalo — **no** Somaliland personal data; **no** speaking for communities
-
-## Core promise
+`sparse-city` is a tiny, deterministic environment for that question. An agent can buy a cell or a whole information layer, answer, or abstain. The score charges for information, penalizes wrong answers, and makes abstention visible instead of quietly treating it as failure.
 
 ```text
-fogged synthetic city  →  QUERY (priced) / ANSWER / ABSTAIN  →  scorecard JSON
-reward ≈ accuracy − λ·info_cost − μ·wrong   (abstain scored, avoids μ)
+fogged grid → QUERY (priced) / ANSWER / ABSTAIN → scorecard.json
 ```
 
-**Ten-second demo:** エージェントが観測タイルを購入し、不確実ならabstainして罰を避ける。
-
-## One-command run
+## Run the small argument
 
 ```bash
-cd projects/sciarc-remix-swarm/worktrees/sparse-city
-chmod +x scripts/run.sh
-./scripts/run.sh
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[dev]"
+
+sparse-city demo --seed 42
 ```
 
-Or manually:
+The demo puts three deliberately simple baselines beside each other:
+
+- `wasteful_buyer` purchases an irrelevant hazard layer and still guesses wrong;
+- `greedy_abstain` purchases the target land-use cell and answers;
+- `threshold_abstain` has too little budget to learn, so it abstains.
+
+For machine-readable output:
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-pip install -e .
-python scripts/write_golden.py   # first time
+sparse-city eval --agent greedy_abstain --seed 42
+sparse-city leaderboard --seed 42
 pytest -q
-python -m sparse_city eval --agent greedy_abstain --fixture seed42
 ```
 
-Local CI: `./scripts/ci-local.sh`
+The agents are baselines, not trained models. The environment uses explicit dictionary actions rather than pretending to implement a Gymnasium contract it cannot satisfy cleanly.
 
-## Quick CLI
+## A design choice that matters
 
-```bash
-# Eval one baseline (default seed 42)
-python -m sparse_city eval --agent greedy_abstain
+Early versions made abstention easy to overlook. Here it has its own outcome, cost, scorecard field, and regression test. A timeout is also scored as abstention, so an agent cannot improve its apparent accuracy by wandering forever.
 
-# Compare baselines
-python -m sparse_city leaderboard --seed 42
+The default world is a generated 3×3 grid. It is intentionally small enough that a reviewer can inspect a complete trajectory. Scaling the grid is less interesting than adding agents that decide whether another query is worth its price.
 
-# Wasteful buyer vs wiser abstain
-python -m sparse_city demo --seed 42
-```
+## Limits
 
-Agents: `always_guess`, `wasteful_buyer`, `threshold_abstain`, `greedy_abstain`.
+- All places, prices, and layers are synthetic.
+- This is a POMDP-like evaluation toy, not a city-planning model.
+- Four hand-written baselines are included; no model leaderboard is claimed.
+- Reward weights encode one particular preference about the cost of error.
 
-## Layout
+## Research lineage
 
-| Path | Role |
-|---|---|
-| `src/sparse_city/env.py` | POMDP-lite synthetic grid + priced queries |
-| `src/sparse_city/scoring.py` | Scorecard + abstain kill-gate helpers |
-| `src/sparse_city/agents/baselines.py` | Baseline agents |
-| `fixtures/episodes/seed42.json` | Synthetic episode fixture |
-| `benchmarks/seed42/` | Expected scorecard + leaderboard JSON |
-| `tests/` | Pricing, abstain ordering, golden hash, brand lint |
+I worked as a research assistant at SCI-Arc Research from May 2024 to January 2025. This is an independent implementation inspired by questions about partial urban knowledge in *Views of Planet City*, *How Cities See*, *Backyard Home Data Explorer*, and *Multifamily Housing in Somaliland*. It does not reproduce those projects or represent their communities. The original contributors are credited in [ATTRIBUTION.md](ATTRIBUTION.md), with implementation provenance in [PROVENANCE.md](PROVENANCE.md).
 
-## Ethics / data policy (hard)
-
-- **Synthetic Toyville only** — invented parcels/layers; not a map of any real city
-- **No speaking for communities** — this bench does not represent Somaliland (or any) residents, governments, or housing outcomes
-- **No real personal data**, no risk scores on real people, no Zillow/Yelp/Twitter, no DTLA LIDAR blobs
-- **No Planet City exhibition assets** — mechanism lineage only; not a re-exhibition
-- **No GitHub org writes / deploy / PR** from this worktree by default
-
-Lineage note: `mech-sparse-data-abstention` is a portable *evaluation* idea (prefer gathering info / abstaining over overconfident claims under sparse data). It is **not** a claim about any real place.
-
-## Kill conditions
-
-- Abstain not scored → fail
-- Maze-only game without abstain metrics → out of scope
-- Planet City re-exhibition → kill
-
-## License
-
-MIT — see [LICENSE](./LICENSE).
+MIT — see [LICENSE](LICENSE).

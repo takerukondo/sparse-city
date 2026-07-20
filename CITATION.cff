@@ -10,12 +10,12 @@ authors:
     given-names: Takeru
     affiliation: Independent personal remix (not official SCI-Arc)
 abstract: >
-  Experimental local MVP: a synthetic-city partial-observability planning toy
+  A synthetic-city partial-observability planning toy
   where agents buy priced observations, act, or abstain under budget, producing
   reproducible abstain-aware scorecards. Independent personal remix inspired by
   portable mechanisms from SCI-Arc Research projects; exhibition assets unused;
-  not an official SCI-Arc publication. Takeru Kondo individual role on source
-  projects: unknown. Does not represent or speak for any real community.
+  not an official SCI-Arc publication. It does not represent or speak for any
+  real community.
 keywords:
   - partial-observability
   - abstention

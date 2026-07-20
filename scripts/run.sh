@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# One-command local MVP: install deps + pytest + demo.
+# Rebuild the environment, run tests, and compare the baselines.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -27,4 +27,4 @@ echo "=== eval greedy_abstain ==="
 python -m sparse_city eval --agent greedy_abstain --fixture seed42
 
 echo ""
-echo "OK — sparse-city local MVP green."
+echo "OK — tests, demo, and scorecard passed."

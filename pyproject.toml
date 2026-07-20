@@ -7,16 +7,16 @@ name = "sparse-city"
 version = "0.1.0"
 description = "Partial-observability city planning toy: buy information vs act vs abstain under budget"
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
 requires-python = ">=3.9"
 authors = [{ name = "Takeru Kondo" }]
 dependencies = [
   "numpy>=1.24",
-  "gymnasium>=0.29",
 ]
 
 [project.optional-dependencies]
 dev = [
+  "build>=1.2",
   "pytest>=8.0",
 ]
 

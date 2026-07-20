@@ -79,7 +79,7 @@ class Belief:
 
 
 class SparseCityEnv:
-    """Gymnasium-shaped but self-contained; no exhibition assets."""
+    """Small self-contained environment with explicit dict actions."""
 
     metadata = {"render_modes": ["ansi"]}
 

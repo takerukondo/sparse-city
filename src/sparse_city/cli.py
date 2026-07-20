@@ -120,7 +120,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             )
         )
         print(
-            "\nSharpened: エージェントが観測タイルを購入し、不確実ならabstainして罰を避ける。"
+            "\nTakeaway: buy the useful observation; abstain when the evidence is not worth its price."
         )
         return 0
 
