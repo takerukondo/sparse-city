@@ -1,0 +1,44 @@
+{
+  "abstained": false,
+  "agent": "greedy_abstain",
+  "budget_left": 7.0,
+  "guess_land_use": 1,
+  "info_cost": 3.0,
+  "metrics": {
+    "abstain_scored": false,
+    "delta_abstain": 0.1,
+    "lambda_info": 0.05,
+    "mu_wrong": 2.0,
+    "overconfidence_penalty_applied": false,
+    "task_accuracy": 1.0
+  },
+  "outcome": "correct",
+  "reward": 0.85,
+  "schema": "sparse-city.scorecard.v1",
+  "scorecard_hash": "626d6a6f4acc5f41",
+  "seed": 42,
+  "steps": 2,
+  "trajectory": [
+    {
+      "action": {
+        "kind": "QUERY",
+        "query": {
+          "type": "land_use_cell",
+          "x": 1,
+          "y": 1
+        }
+      },
+      "outcome": null,
+      "reward": 0.0
+    },
+    {
+      "action": {
+        "kind": "ANSWER",
+        "land_use": 1
+      },
+      "outcome": "correct",
+      "reward": 0.85
+    }
+  ],
+  "truth_land_use": 1
+}

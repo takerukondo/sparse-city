@@ -1,0 +1,38 @@
+{
+  "rows": [
+    {
+      "abstained": false,
+      "agent": "threshold_abstain",
+      "info_cost": 3.0,
+      "outcome": "correct",
+      "reward": 0.85,
+      "scorecard_hash": "e823118e754640b1"
+    },
+    {
+      "abstained": false,
+      "agent": "greedy_abstain",
+      "info_cost": 3.0,
+      "outcome": "correct",
+      "reward": 0.85,
+      "scorecard_hash": "626d6a6f4acc5f41"
+    },
+    {
+      "abstained": false,
+      "agent": "always_guess",
+      "info_cost": 0.0,
+      "outcome": "wrong",
+      "reward": -2.0,
+      "scorecard_hash": "8572b05eb06c5f54"
+    },
+    {
+      "abstained": false,
+      "agent": "wasteful_buyer",
+      "info_cost": 8.0,
+      "outcome": "wrong",
+      "reward": -2.4,
+      "scorecard_hash": "8c1bbbec0b0e6011"
+    }
+  ],
+  "schema": "sparse-city.leaderboard.v1",
+  "seed": 42
+}

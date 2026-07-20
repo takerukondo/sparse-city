@@ -1,0 +1,123 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it and the SCI-Arc research lineage authors below.
+title: sparse-city
+type: software
+version: 0.1.0
+date-released: "2026-07-20"
+license: MIT
+authors:
+  - family-names: Kondo
+    given-names: Takeru
+    affiliation: Independent personal remix (not official SCI-Arc)
+abstract: >
+  Experimental local MVP: a synthetic-city partial-observability planning toy
+  where agents buy priced observations, act, or abstain under budget, producing
+  reproducible abstain-aware scorecards. Independent personal remix inspired by
+  portable mechanisms from SCI-Arc Research projects; exhibition assets unused;
+  not an official SCI-Arc publication. Takeru Kondo individual role on source
+  projects: unknown. Does not represent or speak for any real community.
+keywords:
+  - partial-observability
+  - abstention
+  - information-cost
+  - agent-evaluation
+  - synthetic-city
+references:
+  - type: article
+    title: Views of Planet City
+    authors:
+      - family-names: Young
+        given-names: Liam
+      - family-names: Rehm
+        given-names: Casey
+      - family-names: Cooper
+        given-names: John
+      - family-names: Chen
+        given-names: Jennifer
+      - family-names: Jovanovic
+        given-names: Damjan
+      - family-names: Lorenzi
+        given-names: Angelica
+      - family-names: Mackic
+        given-names: Namik
+    url: http://research.sciarc.edu/projects/11-planet-city-exhibition-2020-
+    notes: SCI-Arc Research / exhibition page; mechanism lineage only; assets unused
+  - type: article
+    title: How Cities See
+    authors:
+      - family-names: Bratton
+        given-names: Benjamin
+      - family-names: Rehm
+        given-names: Casey
+      - family-names: Michelon
+        given-names: Laure
+    url: http://research.sciarc.edu/projects/06-how-cities-see-course-2020-
+    notes: SCI-Arc Research project page; incomplete perception mechanism; LIDAR unused
+  - type: article
+    title: Backyard Home Data Explorer
+    authors:
+      - family-names: Zeiger
+        given-names: Mimi
+      - family-names: Rehm
+        given-names: Casey
+      - family-names: Zhang
+        given-names: Yundi
+      - family-names: Munuhoti
+        given-names: Yashwanth
+      - family-names: Suh
+        given-names: Saghyun
+      - family-names: Cadavid
+        given-names: Daniela
+      - family-names: Chen
+        given-names: Charlene
+      - family-names: Dinnerman
+        given-names: Emily
+      - family-names: Lima
+        given-names: Giovanna Penna
+      - family-names: Pak
+        given-names: Matthew
+      - family-names: Yu
+        given-names: Tiffany
+      - family-names: Fan
+        given-names: Qihang
+      - family-names: Gong
+        given-names: Yuhong
+      - family-names: Ma
+        given-names: Shuai
+      - family-names: Wang
+        given-names: Runhuan
+    url: http://research.sciarc.edu/projects/15-backyard-home-data-explorer
+    notes: >
+      Dense third-party data caution → synthetic substitutes only;
+      Zillow/Yelp/Twitter unused
+  - type: article
+    title: Multifamily Housing in Somaliland
+    authors:
+      - family-names: Seehusen
+        given-names: Frederik Emil
+      - family-names: Hupalo
+        given-names: Masha
+      - family-names: Michelsen
+        given-names: Anders
+      - family-names: Ali
+        given-names: Rashid
+      - family-names: Panchenko
+        given-names: Artem
+      - family-names: Dinnerman
+        given-names: Emily
+      - family-names: Gochnour
+        given-names: Nicholas
+      - family-names: Karaosman
+        given-names: Esin
+      - family-names: Wibowo
+        given-names: Malvin
+      - family-names: Arevalo
+        given-names: Lance
+    url: http://research.sciarc.edu/projects/08-multifamily-housing-in-somaliland-research-2020-
+    notes: >
+      Sparse-evidence / abstention mechanism hint only; no personal data;
+      does not speak for communities; synthetic Toyville substitute
+  - type: article
+    title: "POPGym: Benchmarking Partially Observable Reinforcement Learning"
+    doi: 10.48550/arxiv.2303.01859
+    notes: Related academic prior art; conceptual reuse only

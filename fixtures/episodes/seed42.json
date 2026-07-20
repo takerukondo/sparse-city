@@ -1,0 +1,15 @@
+{
+  "fixture_id": "seed42",
+  "description": "Synthetic Toyville 3x3 fogged grid; target cell (1,1). No real-world geography.",
+  "seed": 42,
+  "width": 3,
+  "height": 3,
+  "budget": 10.0,
+  "target": [1, 1],
+  "start": [0, 0],
+  "lambda_info": 0.05,
+  "mu_wrong": 2.0,
+  "delta_abstain": 0.1,
+  "max_steps": 16,
+  "notes": "Synthetic only. Not Somaliland, not DTLA, not Planet City exhibition."
+}
